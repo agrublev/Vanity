@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>jPlaceholder</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+<script src="jPlaceholder.js"></script>
+<style>
+.placeholder {color:#888;  font-style:italic;}
+</style>
+<script>
+$(document).ready(function(){
+	$("input:text").jPlaceholder({css_class: "placeholder"});
+});
+</script>
+</head>
+
+<body>
+<form method="get" action="#">
+<input type="text" placeholder="something simple..." name="simple" class="placeholder" />
+<input type="submit" />
+</form>
+</body>
+</html>

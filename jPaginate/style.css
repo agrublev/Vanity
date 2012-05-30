@@ -1,0 +1,31 @@
+/*   
+Theme Name: New Design
+Theme URI: http://tutsvalley.com
+Description: New design
+Author: Slobodan Kustrimovic, Angel Grablev
+Author URI: http://tutsvalley.net
+Version: 1
+*/
+@import url('typography.css');
+@import url('structure.css');
+
+.wp-pagenavi { 
+padding:10px;
+text-align:center;
+}
+.wp-pagenavi .right, .wp-pagenavi .left{
+float:none;	
+}
+
+#author_info {
+	display:none;
+	
+}
+#author_info .avatar{
+	width:50px; 
+	height:50px;
+	float:left !important;
+	margin-right:10px;
+	margin-bottom:10px;
+}
+.attachment-thumbnail { -webkit-box-shadow: 0px 0px 5px; -moz-box-shadow: 0px 0px 5px; box-shadow: 0px 0px 5px; }

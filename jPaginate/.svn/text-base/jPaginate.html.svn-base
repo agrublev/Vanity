@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBpC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>jQuery - jPaginate plugin</title>
+<style>
+#content {width:500px;}
+.pagination {list-style:none; margin:10px 0px 0px 0px; padding:0px; clear:both;}
+.pagination li {float:left; margin:3px;}
+.pagination li a{   display:block; padding:3px 5px; color:#fff; background-color:#44b0dd; text-decoration:none;}
+.pagination li a.active {border:1px solid #000; color:#000; background-color:#fff;}
+.pagination li a.inactive {background-color:#eee; color:#777; border:1px solid #ccc;}
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+<script src="jPaginate.js"></script>
+<script>
+$(document).ready(function(){
+    $("#content").jPaginate();                       
+});
+</script>
+</head>
+
+<body>
+<div id="content">  
+    <p>1Lorem ipsum dolor sit amet, consectetur adipiscing ept.</p> 
+    <p>Vestibulum consectetur ipsum sit amet urna euismod imperdiet apquam urna laoreet.</p> 
+    <p>Curabitur a ipsum ut ept porttitor egestas non vitae pbero.</p> 
+    <p>Pellentesque ac sem ac sem tincidunt euismod.</p> 
+    <p>2Duis hendrerit purus vitae nibh tincidunt bibendum.</p> 
+    <p>Nullam in nisireet.</p>   
+    <p>Nulla sed purus et tellus convalps scelerisque.</p> 
+    <p>Nam at justo ut ante consectetur faucibus.</p> 
+    <p>Proin dapibus nisi a quam interdum lobortis.</p> 
+    <p>Nunc ornare nisi sed mi vehicula eu luctus mauris interdum.</p> 
+    <p>Mauris auctor suscipit tellus, at sodales nisi blandit sed.Lorem ipsum dolor sit abitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. </p> 
+</div>  
+
+</body>
+</html>

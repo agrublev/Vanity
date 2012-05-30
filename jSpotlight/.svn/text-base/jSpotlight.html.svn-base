@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>jSpotlight</title>
+<style>
+* {margin:0px; padding:0px;}
+.parent {list-style:none; margin:0px; padding:0px;}
+.parent li {float:left; margin:10px; border:5px solid #eee; width:300px; height:250px; position:relative;}
+.parent li.active {border:5px solid #000;}
+.parent li.inactive {border:5px solid #ccc; -moz-opacity:.50; filter:alpha(opacity=50); opacity:.50;}
+.parent li .title {position:absolute; bottom:0px; left:0px; right:0px; padding:5px; background-color:#000; color:#fff; text-align:center;}
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+<script src="jSpotlight.js"></script>
+<script>
+$(document).ready(function(){
+	$(".parent").jSpotlight({title_effect: "slide"});
+});
+</script>
+</head>
+
+<body>
+<ul class="parent">
+	<li><img src="one.jpg" width="300" height="250" title="Such a pretty photo!" /></li>
+    <li><img src="two.jpg" width="300" height="250" title="Even prettier!" /></li>
+    <li><img src="three.jpg" width="300" height="250" title="Simpler and more information cna be handled here" /></li>
+    <li><img src="four.jpg" width="300" height="250" title="short" /></li>
+</ul><!-- parent -->
+</body>
+</html>
