@@ -20,14 +20,16 @@ x_coordinate = the distance from the mouse the tip will show in the horizontal d
 			y_coordinate: 20,
 			x_coordinate: 20
         };
-        var options = $.extend(defaults, options);
-
+		
+		var options = $.extend(defaults, options);
+		
+		$("body").append('<div class="'+options.tip_class+'" style="position:absolute; z-index:999; left:-9999px;"></div>'); 
+			
         return this.each(function() {
             // object is the selected pagination element list
             var obj = $(this);
-			//obj.css({"position":"relative"});
 			
-			$("body").append('<div class="'+options.tip_class+'" style="position:absolute; z-index:999; left:-9999px;"></div>'); 
+
 			tObj = $("."+options.tip_class);
 			var title_value = obj.attr(options.attr);
 			
@@ -35,7 +37,7 @@ x_coordinate = the distance from the mouse the tip will show in the horizontal d
 				
 				tObj.css({opacity:0.8, display:"none"}).fadeIn(400);
 				obj.removeAttr(options.attr);
-				tObj.css({'left':e.pageX+ options.y_coordinate, 'top':e.pageY+ options.y_coordinate}).html(title_value);
+				tObj.css({'left':e.pageX - (tObj.width() / 2), 'top':e.pageY+ options.y_coordinate}).html(title_value);
 				
 				//fading in the tip
 				tObj.stop().fadeTo('10',0.8);
@@ -50,7 +52,7 @@ x_coordinate = the distance from the mouse the tip will show in the horizontal d
 			});
 			obj.mousemove(function(e) {
 				//Move the tip with the mouse while moving
-				tObj.css({'top':e.pageY + options.y_coordinate,'left': e.pageX + options.y_coordinate});
+				tObj.css({'top':e.pageY + options.y_coordinate,'left': e.pageX - (tObj.width() / 2)});
 			});
 
 			
