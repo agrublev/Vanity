@@ -5,18 +5,414 @@
 <title>Enavu Vanity Tools - jQuery Tools Library by Angel Grablev</title>
 <link rel="stylesheet" type="text/css" href="https://raw.github.com/agrublev/52framework/master/css/reset.css">
 <link rel="stylesheet" type="text/css" href="https://raw.github.com/agrublev/52framework/master/css/general.css">
+<style>
+body {font-family:"Helvetica Neue", Helvetica Neue, Helvetica, sans-serif; background-color:#f9f9f9;}
+.wrap {width:960px; margin:0 auto;}
+h1 {font-weight:100; font-size:52px; margin-bottom:50px;}
+
+#tools {list-style:none; margin:0px; padding:0px;}
+#tools > li {border-bottom:1px solid #ddd; border-top:1px solid #fff; padding-bottom:25px;}
+#tools > li:first-child {border-top:none;} #tools > li:last-child {border-bottom:none;}
+#tools li h2 {font-weight:300; font-size:21px;}
+</style>
 </head>
 
 <body>
-<ul>
-	<li>jSlider</li>
-    <li>jTabs</li>
-    <li>jPaginate</li>
-    <li>jSpotlight</li>
-    <li>jTip</li>
-    <li>jPlaceholder</li>
-    <li>jCollapse</li>
-    <li>jDrag</li>
-</ul>
+<div class="wrap">
+    <h1>Vanity Tools, jQuery Library</h1>
+    <ul id="tools">
+        <li>
+            <h2>jSlider</h2>
+            <p class="description">Make your website prettier with a nice image/div slider that will switch through content every few seconds.</p>
+            <div class="more">
+            	<div class="options">
+                    <a href="/demo/jSlider/jSlider.html" target="_blank" class="demo">Demo</a> <a href="http://vanitytools.googlecode.com/files/jSlider.zip" class="download">Download</a>
+                </div><!-- options -->
+                <div class="clear"></div>
+                <h3>Code Examples</h3>
+                <p>html code needed</p>
+                <pre class="html">
+    &lt;!-- the slider content holder --&gt;
+    &lt;div class=&quot;slider&quot;&gt;
+        &lt;!-- the elements inside the slider, have as many as you want --&gt;
+        &lt;div&gt;
+            &lt;a href=&quot;#&quot;&gt;
+                &lt;img src=&quot;slider_01.jpg&quot; width=&quot;600&quot; height=&quot;350&quot; border=&quot;0&quot; /&gt;
+            &lt;/a&gt;
+        &lt;/div&gt;   
+    
+        &lt;!-- the navigation can be placed ANYWHERE in your document --&gt;
+        &lt;a href=&quot;#&quot; class=&quot;next&quot;&gt;&amp;rarr;&lt;/a&gt;
+        &lt;a href=&quot;#&quot; class=&quot;prev&quot;&gt;&amp;larr;&lt;/a&gt;
+    &lt;/div&gt;&lt;!-- slider --&gt;
+                </pre>
+                <p>javascript code needed</p>
+                <pre class="js">
+    $(document).ready(function(){
+        $(".slider").jSlider({elem:"div"});
+    });         </pre>
+                <p><i>optional</i> css you can use for a base</p>
+                <pre class="css">
+    .slider {width:600px; height:350px; margin:50px auto; position:relative;}
+    a.next, a.prev {color:#000; background-color:#eee; border:1px solid #fff; outline:1px solid #ccc; text-shadow:-1px -1px 0px #fff; text-decoration:none; z-index:99; padding:0px 5px; display:block; }
+    .next {position:absolute; right:-10px; top:50%;}
+    .prev {position:absolute; left:-10px; top:50%;}
+    a.inactive {color:#ccc; background-color:#fff; border:1px solid #eee; outline:none;}
+    /* ul.navi is the generated navigational bullets we generate, you can disable this */
+    ul.navi {list-style:none; position:absolute; bottom:10px; right:5px;}
+    ul.navi li {float:left; margin-right:5px;}
+    ul.navi li a {background-color:#CCC; display:block; height:10px; width:10px; text-indent:-9999px; outline:none; -moz-border-radius: 5px; border-radius: 5px;-webkit-box-shadow:  0px 0px 2px  #000000;
+    -moz-box-shadow: 0px 0px 3px #000000;
+    box-shadow: 0px 0px 1px #000000; }
+    ul.navi li a.active {background-color:#fff;}
+                </pre>
+                <br /><br />
+                <h3>Documentation</h3>
+                <p>The slider has a wide range of options you can choose to use. For custom animation transition effects you will need to embed the custom_animations.js. For custom easing in effects you will need to embed the custom_easing.js.</p>
+                <ul class="jquery_options">
+                    <li><span>previous_class</span> the class for the element that navigates to the previous item</li>
+                    <li><span>next_class</span> the class that navigates to the previous item/slide</li>
+                    <li><span>inactive</span> the class that will be set to the previous or next navigations when they are inactive</li>
+                    <li><span>elem</span> the elements inside your slider content item, this can be li's if ur slider is a ul</li>
+                    <li><span>animation</span> the animation is by default set to fade but if you include the custom_animations.js file you can use the following: slideDown, slideUp, slideRight, slideLeft, bounce, explode, fold, scale, random</li>
+                    <li><span>easing</span> by default we use swing easing but if you included the custom_easing.js file you can use the following easing: linear, swing, jswing, easeInQuad, easeOutQuad, easeInOutQuad, easeInCubic, easeOutCubic, easeInOutCubic, easeInQuart, easeOutQuart, easeInOutQuart, easeInQuint, easeOutQuint, easeInOutQuint, easeInSine, easeOutSine, easeInOutSine, easeInExpo, easeOutExpo, easeInOutExpo, easeInCirc, easeOutCirc, easeInOutCirc, easeInElastic, easeOutElastic, easeInOutElastic, easeInBack, easeOutBack, easeInOutBack, easeInBounce, easeOutBounce, easeInOutBounce</li>
+                    <li><span>speed</span> the speed of the animation</li>
+                    <li><span>navi</span> true/false if you want to have the navigation list to shop up</li>
+                    <li><span>navi_active_class</span> if navi is true you can choose a class to use for the navigation's active item</li>
+                    <li><span>navi_class</span> if navi is true you can choose a class to use for the navigation itself</li>
+                    <li><span>auto_slide</span> true/false to play the slider like a slide show</li>
+                    <li><span>auto_slide_interval</span> time in milliseconds between slides</li>
+                    <li><span>auto_pause_hover</span> if auto_slide is enabled you can choose whether to pause the slider when you hover with your mouse</li>
+                    <li><span>click_next</span> true/false if you want to allow to go to next slide when you click on the slider</li>
+                    <li><span>infinite</span> true/false infinite will make the slider infinite so when you are at the last slide you can click next and go back to the first slide and the same is true for the previous button</li>
+                    <li><span>images</span> true/false if your slider uses an image for each slide enabling this will take that image and set it as the background of the slider so when the animation occurs it feels natural switching</li>
+                </ul>
+            </div><!-- more -->
+        </li><!-- jSlider -->
+        
+        
+        
+        
+        
+        <li>
+        	<h2>jTabs</h2>
+        	<p class="description">Ever wanted to create tabbed content... the easy way?</p>
+            <div class="more">
+            	<div class="options">
+                    <a href="/demo/jTabs/jTabs.html" target="_blank" class="demo">Demo</a> <a href="http://vanitytools.googlecode.com/files/jTabs.zip" class="download">Download</a>
+                </div><!-- options -->
+                <div class="clear"></div>
+                <h3>Code Examples</h3>
+                <p>html code needed</p>
+                <pre class="html">
+    &lt;ul class=&quot;tabs&quot;&gt;  
+        &lt;li class=&quot;active&quot;&gt;&lt;a href=&quot;#&quot;&gt;Tab 1&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Tab 2&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Tab 3&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;  
+    &lt;div class=&quot;clear&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;tabs_content&quot;&gt;
+        &lt;div&gt;Sample 1 content&lt;/div&gt;
+        &lt;div&gt;Sample 2 content&lt;/div&gt;
+        &lt;div&gt;Samplest content for the 3rd tabSamplest content for the 3rd tab&lt;/div&gt;
+    &lt;/div&gt;&lt;!-- tabs content --&gt;
+                </pre>
+                <p>javascript code needed</p>
+                <pre class="js">
+    $(document).ready(function(){
+        $("ul.tabs").jTabs({content: ".tabs_content"});
+    });         
+                </pre>
+                <p><i>optional</i> css you can use for a base</p>
+                <pre class="css">
+    ul.tabs {list-style:none; width:500px;}
+    ul.tabs li:first-child {border-left:1px solid #ccc;}
+    ul.tabs li {float:left; border-right:1px solid #ccc; border-top:1px solid #ccc; background-color:#eee;}
+    ul.tabs li.active {border-bottom:1px solid #fff; background-color:#fff; margin-bottom:-1px;}
+    ul.tabs li a {display:block; padding:5px 10px; color:#777; letter-spacing:-1px; outline:none; text-decoration:none; font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;}
+    ul.tabs li.active a {font-weight:600; color:#000;}
+    
+    div.tabs_content {width:500px; border:1px solid #ccc;}
+    div.tabs_content > div {padding:20px; display:none;} /* suggested to use display:none so that if the html is very long it wont jump badly */
+                </pre>
+                <br /><br />
+                <h3>Documentation</h3>
+                <p>The jTabs allow you to use cookies, or custom fade in effects. It also has equal height script to make the pagination jump free.</p>
+                <ul class="jquery_options">
+                    <li><span>content</span> the element that will hold the divs with the content of each tab</li>
+                    <li><span>equal_height</span> true/false to enable the columns to find the highest tab and set the height across all tabs</li>
+                    <li><span>cookies</span> true/false will use browser cookies to store which tab the user is on</li>
+                    <li><span>animate</span> true/false if you would like to use an animation effect when you switch tabs</li>
+                    <li><span>effect</span> which animation effect would you like to use (default is fade) other option includes slide</li>
+                    <li><span>speed</span> if you have animation to true you can choose how long to take the effect to take place</li>
+                </ul>
+            </div><!-- more -->
+        </li><!-- jTabs -->
+        
+        
+        
+        
+        
+        
+        
+        <li>
+        	<h2>jPaginate</h2>
+        	<p class="description">Sometimes our content cant get out of hand, to help you split it a bit you can paginate it with this plugin.</p>
+            <div class="more">
+            	<div class="options">
+                    <a href="/demo/jPaginate/jPaginate.html" target="_blank" class="demo">Demo</a> <a href="http://vanitytools.googlecode.com/files/jPaginate.zip" class="download">Download</a>
+                </div><!-- options -->
+                <div class="clear"></div>
+                <h3>Code Examples</h3>
+                <p>html code needed</p>
+                <pre class="html">
+        &lt;div id=&quot;content&quot;&gt;  
+        &lt;p&gt;1Lorem ipsum dolor sit amet, consectetur adipiscing ept.&lt;/p&gt; 
+        &lt;p&gt;Vestibulum consectetur ipsum sit amet urna euismod imperdiet apquam urna laoreet.&lt;/p&gt; 
+        &lt;p&gt;Curabitur a ipsum ut ept porttitor egestas non vitae pbero.&lt;/p&gt; 
+        &lt;p&gt;Pellentesque ac sem ac sem tincidunt euismod.&lt;/p&gt; 
+        &lt;p&gt;2Duis hendrerit purus vitae nibh tincidunt bibendum.&lt;/p&gt; 
+        &lt;p&gt;Nullam in nisireet.&lt;/p&gt;   
+        &lt;p&gt;Nulla sed purus et tellus convalps scelerisque.&lt;/p&gt; 
+        &lt;p&gt;Nam at justo ut ante consectetur faucibus.&lt;/p&gt; 
+        &lt;p&gt;Proin dapibus nisi a quam interdum lobortis.&lt;/p&gt; 
+        &lt;p&gt;Nunc ornare nisi sed mi vehicula eu luctus mauris interdum.&lt;/p&gt; 
+        &lt;p&gt;Mauris auctor suscipit tellus, at sodales nisi blandit sed.Lorem ipsum dolor sit abitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. &lt;/p&gt; 
+        &lt;/div&gt;  
+                </pre>
+                <p>javascript code needed</p>
+                <pre class="js">
+        $(document).ready(function(){
+        $("#content").jPaginate(); 
+        });         
+                </pre>
+                <p><i>optional</i> css you can use for a base</p>
+                <pre class="css">
+        #content {width:500px;}
+        /* the following code is to style the generated pagination navigation system */
+        .pagination {list-style:none; margin:10px 0px 0px 0px; padding:0px; clear:both;}
+        .pagination li {float:left; margin:3px;}
+        .pagination li a{   display:block; padding:3px 5px; color:#fff; background-color:#44b0dd; text-decoration:none;}
+        .pagination li a.active {border:1px solid #000; color:#000; background-color:#fff;}
+        .pagination li a.inactive {background-color:#eee; color:#777; border:1px solid #ccc;}
+                </pre>
+                <br /><br />
+                <h3>Documentation</h3>
+                <p>jPagination is filled with great little options to make the experience full of enhancements. For example you can set equal height to true to disable any jumping from the difference in height of pages. You can also enable cookies and have the users selected page be pre-selected when they refresh or come back to the page.</p>
+                <ul class="jquery_options">
+                    <li><span>items</span> number of items to have per page on pagination</li>
+                    <li><span>next</span> the text you want to have inside the text button</li>
+                    <li><span>previous</span> the text you want in the previous button</li>
+                    <li><span>active</span> the class you want the active paginaiton link to have</li>
+                    <li><span>pagination_class</span> the class of the pagination element that is being generated for you to style</li>
+                    <li><span>minimize</span> minimizing will limit the overall number of elements in the pagination links</li>
+                    <li><span>nav_items</span> when minimize is set to true you can specify how many items to show</li>
+                    <li><span>cookies</span> if you want to use cookies to remember which page the user is on, true by default</li>
+                    <li><span>position</span> specify the position of the pagination, possible options: "before", "after", or "both"</li>
+                    <li><span>equal</span> implements an equal height main element by using the highest possible element use true false</li>
+                    <li><span>offset</span> unfortunately calculating heights with javascript isn't always 100% accurate, so please use this value to make it perfect :) its defaultly set to 50</li>
+                </ul>
+            </div><!-- more -->
+        </li><!-- jPaginate -->
+        
+        
+        
+        
+        
+        
+        <li>
+        	<h2>jSpotlight</h2>
+        	<p class="description">Want to highlight something in a fancy shmancy way?</p>
+            <div class="more">
+            	<div class="options">
+                    <a href="/demo/jSpotlight/jSpotlight.html" target="_blank" class="demo">Demo</a> <a href="http://vanitytools.googlecode.com/files/jSpotlight.zip" class="download">Download</a>
+                </div><!-- options -->
+                <div class="clear"></div>
+                <h3>Code Examples</h3>
+                <p>html code needed</p>
+                <pre class="html">
+        &lt;ul class=&quot;parent&quot;&gt;
+        &lt;li&gt;&lt;img src=&quot;one.jpg&quot; width=&quot;300&quot; height=&quot;250&quot; title=&quot;Such a pretty photo!&quot; /&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;img src=&quot;two.jpg&quot; width=&quot;300&quot; height=&quot;250&quot; title=&quot;Even prettier!&quot; /&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;img src=&quot;three.jpg&quot; width=&quot;300&quot; height=&quot;250&quot; title=&quot;Simpler and more information cna be handled here&quot; /&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;img src=&quot;four.jpg&quot; width=&quot;300&quot; height=&quot;250&quot; title=&quot;short&quot; /&gt;&lt;/li&gt;
+        &lt;/ul&gt;&lt;!-- parent --&gt;
+                </pre>
+                <p>javascript code needed</p>
+                <pre class="js">
+        $(document).ready(function(){
+        $(".parent").jSpotlight({title_effect: "slide"});
+        });         
+                </pre>
+                <p><i>optional</i> css you can use for a base</p>
+                <pre class="css">
+        .parent {list-style:none; margin:0px; padding:0px;}
+        .parent li {float:left; margin:10px; border:5px solid #eee; width:300px; height:250px; position:relative;}
+        .parent li.active {border:5px solid #000;}
+        .parent li.inactive {border:5px solid #ccc; -moz-opacity:.50; filter:alpha(opacity=50); opacity:.50;}
+        .parent li .title {position:absolute; bottom:0px; left:0px; right:0px; padding:5px; background-color:#000; color:#fff; text-align:center;}
+                </pre>
+                <br /><br />
+                <h3>Documentation</h3>
+                <p>jSpotlight is the real jewel of vanity in the whole set of plugins. It allows you to create beautiful spotlight effect in a series of images or just elements.</p>
+                <ul class="jquery_options">
+                    <li><span>active</span> the class for the element that is currently hovered over</li>
+                    <li><span>inactive</span> the class for the elements that are not hovered over when the main element is active</li>
+                    <li><span>attr</span> the attribute inside the img to take the information for the title</li>
+                    <li><span>title_class</span> the class of the title div which you can style</li>
+                    <li><span>title_effect</span> the effect the title will have appearing and dissapearing, possible: slide, fade, default</li>
+                    <li><span>title_speed</span> specify the speed of the effect in milliseconds or use slow/fast in quotes so like "slow"</li>
+                    <li><span>title</span> here you can enable or disable the title effect by passing in true or false</li>
+                </ul>
+            </div><!-- more -->
+        </li><!-- jSpotlight -->
+        
+        
+        
+        
+        
+        <li>
+        	<h2>jTip</h2>
+        	<p class="description">Tooltips are helpful, and now sexy! Get your tooltips going today.</p>
+            <div class="more">
+            	<div class="options">
+                    <a href="/demo/jTip/jTip.html" target="_blank" class="demo">Demo</a> <a href="http://vanitytools.googlecode.com/files/jTip.zip" class="download">Download</a>
+                </div><!-- options -->
+                <div class="clear"></div>
+                <h3>Code Examples</h3>
+                <p>html code needed</p>
+                <pre class="html">
+    &lt;a href=&quot;#&quot; class=&quot;tip&quot; title=&quot;jTip And something longer will go here&quot;&gt;Simple Tip&lt;/a&gt;
+    &lt;a href=&quot;#&quot; class=&quot;tip&quot; title=&quot;Something else in here!&quot;&gt;Simple Tip 2&lt;/a&gt;
+    &lt;a href=&quot;#&quot; class=&quot;tip&quot; title=&quot;This is the greatest tip plugin EVER! Seriously :)&quot;&gt;Longer text&lt;/a&gt;
+                </pre>
+                <p>javascript code needed</p>
+                <pre class="js">
+    $(document).ready(function(){
+        $(".tip").jTip();
+    });         
+                </pre>
+                <p><i>optional</i> css you can use for a base</p>
+                <pre class="css">
+    .tip_window {
+        padding:5px; 
+        width:200px;
+        border:1px solid #fff;
+        background-color:#000; 
+        color:#fff; 
+        text-align:center;
+        -moz-border-radius-topleft: 0px;
+        -moz-border-radius-topright: 4px;
+        -moz-border-radius-bottomright: 4px;
+        -moz-border-radius-bottomleft: 4px;
+        border-top-left-radius: 0px;
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+        border-bottom-left-radius: 4px; 
+        -webkit-box-shadow: 1px 1px 3px #6e6d6e;
+        -moz-box-shadow: 1px 1px 3px #6e6d6e;
+        box-shadow: 1px 1px 3px #6e6d6e; 
+    }
+                </pre>
+                <br /><br />
+                <h3>Documentation</h3>
+                <p>jTip is a super simple tip plugin, it's so simple we only have 4 options to use. Which attribute, that class for the tip, and the coordinates away from the element. That easy!</p>
+                <ul class="jquery_options">
+                    <li><span>attr</span> the attribute you want to pull the content from</li>
+                    <li><span>tip_class</span> the class you want to style for the tip, make sure to have a width when styling</li>
+                    <li><span>y_coordinate</span> the distance from the mouse the tip will show in the vertical direction</li>
+                    <li><span>x_coordinate</span> the distance from the mouse the tip will show in the horizontal direction</li>
+                </ul>
+            </div><!-- more -->
+        </li><!-- jTip -->
+        
+        
+        
+        
+        
+        
+        
+        <li>
+        	<h2>jPlaceholder</h2>
+        	<p class="description">Yeah, html5 is awesome... we all know this. However go ahead and use it in IE, that's right you can't... until now. Make those textfields sexy again.</p>
+            <div class="more">
+            	<div class="options">
+                    <a href="/demo/jPlaceholder/jPlaceholder.html" target="_blank" class="demo">Demo</a> <a href="http://vanitytools.googlecode.com/files/jPlaceholder.zip" class="download">Download</a>
+                </div><!-- options -->
+                <div class="clear"></div>
+                <h3>Code Examples</h3>
+                <p>html code needed</p>
+                <pre class="html">
+    &lt;form method=&quot;get&quot; action=&quot;#&quot;&gt;
+    &lt;input type=&quot;text&quot; placeholder=&quot;something simple...&quot; name=&quot;simple&quot; class=&quot;placeholder&quot; /&gt;
+    &lt;input type=&quot;submit&quot; /&gt;
+    &lt;/form&gt;
+                </pre>
+                <p>javascript code needed</p>
+                <pre class="js">
+    $(document).ready(function(){
+        $("input:text").jPlaceholder({css_class: "placeholder"});
+    });         
+                </pre>
+                <p><i>optional</i> css you can use for a base</p>
+                <pre class="css">
+    .placeholder {color:#888;  font-style:italic;}
+                </pre>
+                <br /><br />
+                <h3>Documentation</h3>
+                <p>jPlaceholder brings the functionality of the html5 placeholder in all browsers!</p>
+                <ul class="jquery_options">
+                    <li><span>css_class</span> allows you to specify the class for the placeholder text</li>
+                </ul>
+            </div><!-- more -->
+        </li><!-- jPlaceholder -->
+        
+        
+        
+        
+        
+        
+        <li>
+        	<h2>jCollapse</h2>
+        	<p class="description">That's right, collapse anything (or at least any dom element) with this nifty plugin</p>
+            <div class="more">
+            	<div class="options">
+                    <a href="/demo/jCollapse/jCollapse.html" target="_blank" class="demo">Demo</a> <a href="http://vanitytools.googlecode.com/files/jCollapse.zip" class="download">Download</a>
+                </div><!-- options -->
+                <div class="clear"></div> 
+                <h3>Code Examples</h3>
+                <p>html code needed</p>
+                <pre class="html">
+    &lt;a href=&quot;#&quot; class=&quot;collapse&quot; rel=&quot;#collapsibleElement&quot;&gt;Expand&lt;/a&gt;
+    &lt;div id=&quot;collapsibleElement&quot;&gt;
+        Test Content Number 1
+    &lt;/div&gt;
+                </pre>
+                <p>javascript code needed</p>
+                <pre class="js">
+    $(document).ready(function(){
+        $(".collapse").jCollapse({effect: "fade"});                       
+    });       </pre>
+                <br /><br />
+                <h3>Documentation</h3>
+                <p>The collapse is very easy to use with only a few options to modify.</p>
+                <ul class="jquery_options">
+                    <li><span>expand_text</span> enter the text you want the link to contain before the user has expanded the elements default is "expand"</li>
+                    <li><span>collapse_text</span> the text you want after the user expands the element(s) default is "Collapse" (commonly you can use More and Less)</li>	
+                    <li><span>effect</span> this will be the effect that will change the way the new element/s show up, available options are: display, slide, fade	</li>
+                </ul>
+            </div><!-- more -->
+        </li><!-- jCollapse -->
+        
+        
+        
+        
+        
+        <li>
+        	<h2>jDrag</h2>
+        	<p class="description">Because dragging a dom element has never, ever, been this easy!</p>
+        </li><!-- jDrag -->
+    </ul>
+</div><!-- wrap -->
 </body>
 </html>
