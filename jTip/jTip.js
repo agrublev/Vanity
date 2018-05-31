@@ -16,46 +16,48 @@ x_coordinate = the distance from the mouse the tip will show in the horizontal d
     $.fn.jTip = function(options) {
         var defaults = {
             attr: "title",
-			tip_class: "tip_window",
-			y_coordinate: 20,
-			x_coordinate: 20
+            tip_class: "tip_window",
+            y_coordinate: 40,
+            x_coordinate: 0
         };
-		
-		var options = $.extend(defaults, options);
-		
-		$("body").append('<div class="'+options.tip_class+'" style="position:absolute; z-index:999; left:-9999px;"></div>'); 
-			
+        var options = $.extend(defaults, options);
         return this.each(function() {
+            var DEFAULT_WIDTH = 150;
             // object is the selected pagination element list
             var obj = $(this);
-			
-
-			tObj = $("."+options.tip_class);
-			var title_value = obj.attr(options.attr);
-			
-			obj.hover(function(e) {	
-				
-				tObj.css({opacity:0.8, display:"none"}).fadeIn(400);
-				obj.removeAttr(options.attr);
-				tObj.css({'left':e.pageX - (tObj.width() / 2), 'top':e.pageY+ options.y_coordinate}).html(title_value);
-				
-				//fading in the tip
-				tObj.stop().fadeTo('10',0.8);
-				
-			}, function(e) {
-			
-				//Put back the title attribute's value
-				obj.attr(options.attr,title_value);
-				//Remove the appended tooltip template
-				tObj.stop().fadeOut(400);
-				
-			});
-			obj.mousemove(function(e) {
-				//Move the tip with the mouse while moving
-				tObj.css({'top':e.pageY + options.y_coordinate,'left': e.pageX - (tObj.width() / 2)});
-			});
-
-			
-		});
+            var tObj = $('<div class="'+options.tip_class+'" style="position:absolute; z-index:999; left:-9999px;"></div>');
+            $("body").append(tObj);
+            var title_value = obj.attr(options.attr);
+            
+            function updatePosition(e) {
+                var top = e.pageY + options.y_coordinate;
+                var left = e.pageX + options.x_coordinate;
+                var my_width = tObj.width();
+                if ( (left + tObj.width()) >= $(window).width()) {
+                    left = e.pageX - my_width;
+                }
+                tObj.css({'left':left, 'top':top});
+            }
+            
+            obj.on({
+                mouseenter: function (e) {
+                    tObj.css({opacity:0.8, display:"none"}).fadeIn(400);
+                    obj.attr(options.attr, "");
+                    tObj.html(title_value);
+                    updatePosition(e);
+                    //fading in the tip
+                    tObj.stop().fadeTo('10',0.8);
+                },
+                mouseleave: function (e) {
+                    //Put back the title attribute's value
+                    obj.attr(options.attr,title_value);
+                    tObj.stop().fadeOut(400);
+                }
+            });
+            obj.on("mousemove", function(e) {
+                //Move the tip with the mouse while moving
+                updatePosition(e);
+            });
+        });
     };
 })(jQuery);

@@ -25,10 +25,10 @@ title = here you can enable or disable the title effect by passing in true or fa
 			title_class: "title",
 			title_effect: "fade",
 			title_speed: 300,
-			title: true
+			title: true,
+			scale: false
         };
         var options = $.extend(defaults, options);
-
         return this.each(function() {
             // object is the selected pagination element list
             var obj = $(this);
@@ -41,39 +41,50 @@ title = here you can enable or disable the title effect by passing in true or fa
 				});
 			}
 			// Handle the hover event to apply one class/style to current and another to rest
-        	obj.children().hover(function(e){ 
+            obj.children().hover(function (e) {
 				// on mouse over
-				$(this).siblings().removeClass(options.active).addClass(options.inactive);
-				$(this).removeClass(options.inactive).addClass(options.active);
+                var $th = $(this);
+                $th.siblings().removeClass(options.active).addClass(options.inactive);
+                $th.removeClass(options.inactive).addClass(options.active);
+                if(options.scale){
+					$th.css({"transform": "scale(1.051)","transition":"all 1s"});
+					$th.siblings().css({"transform": "scale(0.9)","transition":"all 1s"});
+                }
 				// if title is enabled
 				if (options.title) {
 					switch(options.title_effect) {
 					case "fade":
-					  $(this).find("."+options.title_class).fadeIn(options.title_speed);
+                        $th.find("." + options.title_class).stop(true, true).fadeIn(options.title_speed, function () {
+                        });
 					  break;
 					case "slide":
-					  $(this).find("."+options.title_class).slideDown(options.title_speed);
+                        $th.find("." + options.title_class).stop(true, true).slideDown(options.title_speed);
 					  break;
 					default:
-						$(this).find("."+options.title_class).show();
+                        $th.find("." + options.title_class).show();
 					}
 				} 
 			},function(){
+                var $th = $(this);
 				// on mouse leave
-				$(this).removeClass(options.active).removeClass(options.inactive).siblings().removeClass(options.active).removeClass(options.inactive);
+                $th.removeClass(options.active).removeClass(options.inactive).siblings().removeClass(options.active).removeClass(options.inactive);
 				// if title is enabled
+                if(options.scale) {
+                    $th.siblings().css({"transform": "none"});
+                    $th.css("transform", "none");
+                }
 				if (options.title) {
 					switch(options.title_effect) {
 					case "fade":
-					  $(this).find("."+options.title_class).fadeOut(options.title_speed);
+                        $th.find("." + options.title_class).stop(true, true).fadeOut(options.title_speed);
 					  break;
 					case "slide":
-					  $(this).find("."+options.title_class).slideUp(options.title_speed);
+                        $th.find("." + options.title_class).stop(true, true).slideUp(options.title_speed);
 					  break;
 					default:
-						$(this).find("."+options.title_class).hide();
+                        $th.find("." + options.title_class).hide();
 					}
-				} 
+                }
 			});
 		});
     };
